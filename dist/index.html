@@ -1,0 +1,30 @@
+<!-- E:\rust_dev\kids_story_trainer\index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kids Story Trainer (5th Grade)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- This makes Trunk bundle styles.css -->
+    <link rel="stylesheet" href="./styles.css" integrity="sha384-O97ub5h/Yc+hMxppd2IEmp/uw4Bafzet2BvvKVBPJ5POgQ3C0IN+N79gMx/L7+Sg"/>
+  <link rel="modulepreload" href="./kids_story_trainer.js" crossorigin="anonymous" integrity="sha384-AVoAHgmxin7cFlllG+DQ40x0A77k8oMOiZFtDmsko3gf57nLLgNyFuECsiE7fDP3"><link rel="preload" href="./kids_story_trainer_bg.wasm" crossorigin="anonymous" integrity="sha384-/f0A4eNNFPgbjuJmfbxi8ZfW6RXPsLORCWytFWht0rTv6OKhf7he0gDdKHZnmU10" as="fetch" type="application/wasm"></head>
+  <body>
+    <!-- Yew will render into <body> by default -->
+    <script type="module">
+      import init from "./kids_story_trainer.js";
+      init();
+    </script>
+  
+<script type="module">
+import init, * as bindings from './kids_story_trainer.js';
+const wasm = await init({ module_or_path: './kids_story_trainer_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>

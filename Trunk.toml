@@ -1,0 +1,16 @@
+[build]
+target = "index.html"
+release = true
+dist = "dist"
+filehash = false
+public_url = "./"
+
+[serve]
+address = "127.0.0.1"
+port = 8080
+open = true
+
+[[copy]]
+# If you use a static CSS file
+source = "static"
+destination = "static"
